@@ -41,6 +41,22 @@ namespace NUnitAutomationProject.Pages
             }
         }
 
+        protected string GetTextFromListById(string element, int id)
+        {
+            IList<IWebElement> resultLinks;
+            string text = null;
+            try
+            {
+                resultLinks = driver.FindElements(By.XPath(element));
+                text = resultLinks.ElementAt(id).Text;
+            }
+            catch (NoSuchElementException e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return text;
+        }
+
         protected IWebElement WaitForElementExists(By locator, int maxSeconds)
         {
             return new WebDriverWait(driver, TimeSpan.FromSeconds(maxSeconds)).Until(ExpectedConditions.ElementExists(locator));

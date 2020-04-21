@@ -17,7 +17,7 @@ namespace NUnitAutomationProject.Tests.GoogleSearchTest
 
             searchPage.EnterTextIntoSearchField(textToSearch);
             searchPage.SubmitSearchRequest();
-            string actualText = searchPage.GetTextFromResultsById(5);
+            string actualText = searchPage.GetTextFromSearchResults(5);
 
             Assert.IsTrue(actualText.Contains(expectedText));
         }

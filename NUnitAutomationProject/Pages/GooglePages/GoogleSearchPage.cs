@@ -30,10 +30,9 @@ namespace NUnitAutomationProject.Pages
         }
 
         // This method gets list of search results, and returns text from row by row ID
-        public string GetTextFromResultsById(int id)
+        public string GetTextFromSearchResults(int id)
         {
-            IList<IWebElement> resultLinks = driver.FindElements(By.XPath(Results));
-            return resultLinks.ElementAt(id).Text;
+            return GetTextFromListById(Results, id);
         }
     }
 }
