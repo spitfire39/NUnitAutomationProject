@@ -29,13 +29,11 @@ namespace NUnitAutomationProject.Pages
             return new GoogleSearchPage(driver);
         }
 
-        // This method gets list of search results, from list takes row by row ID, and checks for text presence
+        // This method gets list of search results, and returns text from row by row ID
         public string GetTextFromResultsById(int id)
         {
             IList<IWebElement> resultLinks = driver.FindElements(By.XPath(Results));
-            //return resultLinks.ElementAt(id).Text.Contains(text);
             return resultLinks.ElementAt(id).Text;
-
         }
     }
 }
