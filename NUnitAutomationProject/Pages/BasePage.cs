@@ -16,11 +16,11 @@ namespace NUnitAutomationProject.Pages
             this.driver = driver;
         }
 
-        protected void TypeText(string element, string text)
+        protected void TypeText(By element, string text)
         {
             try
             {
-                driver.FindElement(By.Name(element)).SendKeys(text);
+                driver.FindElement(element).SendKeys(text);
             }
             catch (NoSuchElementException e)
             {
@@ -28,12 +28,12 @@ namespace NUnitAutomationProject.Pages
             }
         }
 
-        protected void SubmitSearch(string element, string elementToWaitfor)
+        protected void SubmitSearch(By element, By elementToWaitfor)
         {
             try
             {
-                driver.FindElement(By.Name(element)).Submit();
-                WaitForElementExists(By.XPath(elementToWaitfor), 5);
+                driver.FindElement(element).Submit();
+                WaitForElementExists(elementToWaitfor, 5);
             }
             catch (NoSuchElementException e)
             {
@@ -41,13 +41,13 @@ namespace NUnitAutomationProject.Pages
             }
         }
 
-        protected string GetTextFromListById(string element, int id)
+        protected string GetTextFromListById(By element, int id)
         {
             IList<IWebElement> resultLinks;
             string text = null;
             try
             {
-                resultLinks = driver.FindElements(By.XPath(element));
+                resultLinks = driver.FindElements(element);
                 text = resultLinks.ElementAt(id).Text;
             }
             catch (NoSuchElementException e)

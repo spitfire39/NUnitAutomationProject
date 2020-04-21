@@ -12,8 +12,8 @@ namespace NUnitAutomationProject.Pages
     {
         public GoogleSearchPage(IWebDriver driver) : base(driver) { }
 
-        static string SearchField = "q";
-        static string Results = "//div[@class='r']//h3";
+        private static By SearchField = By.Name("q");
+        private static By Results = By.XPath("//div[@class='r']//h3");
 
         // this method enters text into search field
         public GoogleSearchPage EnterTextIntoSearchField(string text)
