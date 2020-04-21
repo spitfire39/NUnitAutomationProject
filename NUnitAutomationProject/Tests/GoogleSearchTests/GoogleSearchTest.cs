@@ -1,19 +1,21 @@
 ﻿using NUnit.Framework;
 using NUnitAutomationProject.Pages;
+using OpenQA.Selenium;
 
 namespace NUnitAutomationProject.Tests.GoogleSearchTest
 {
     [TestFixture]
     class GoogleSearchTest : BaseTest
     {
-        
+
         [Test]
         public void SubmitSearchRequestAndCheckSearchResults()
         {
-            var searchPage = new GoogleSearchPage(driver);
+            //GoogleSearchPage searchPage = new GoogleSearchPage(driver);
+            var searchPage = new GoogleSearchPage<T>(driver);
             searchPage.EnterTextIntoSearchField("Selenium IDE export to C#");
             var resultsPage = searchPage.SubmitSearchRequest();
-            Assert.True(resultsPage.getTextFromResultsById(5, "Selenium IDE"));
+            //Assert.True(resultsPage.GetTextFromResultsById(5, "Selenium IDE"));
         }
     }
 }

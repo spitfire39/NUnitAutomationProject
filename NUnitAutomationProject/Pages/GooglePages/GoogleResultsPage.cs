@@ -5,17 +5,12 @@ using System.Linq;
 
 namespace NUnitAutomationProject.Pages
 {
-    public class GoogleResultsPage
+    public class GoogleResultsPage<T> : BasePage<T>
     {
-        IWebDriver driver;
-
-        public GoogleResultsPage(IWebDriver driver)
-        {
-            this.driver = driver;
-        }
+        public GoogleResultsPage(IWebDriver driver) : base(driver) { }
 
         // This method gets list of search results, from list takes row by row ID, and checks for text presence
-        public bool getTextFromResultsById(int id, string text)
+        public bool GetTextFromResultsById(int id, string text)
         {
             IList<IWebElement> resultLinks = driver.FindElements(By.XPath("//div[@class='r']//h3")); // css: #center_col .g .rc .r
             return resultLinks.ElementAt(id).Text.Contains(text);
