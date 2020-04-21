@@ -11,11 +11,15 @@ namespace NUnitAutomationProject.Tests.GoogleSearchTest
         [Test]
         public void SubmitSearchRequestAndCheckSearchResults()
         {
-            //GoogleSearchPage searchPage = new GoogleSearchPage(driver);
-            var searchPage = new GoogleSearchPage<T>(driver);
-            searchPage.EnterTextIntoSearchField("Selenium IDE export to C#");
-            var resultsPage = searchPage.SubmitSearchRequest();
-            //Assert.True(resultsPage.GetTextFromResultsById(5, "Selenium IDE"));
+            GoogleSearchPage searchPage = new GoogleSearchPage(driver);
+            string textToSearch = "Selenium IDE export to C#";
+            string expectedText = "Selenium IDE";
+
+            searchPage.EnterTextIntoSearchField(textToSearch);
+            searchPage.SubmitSearchRequest();
+            string actualText = searchPage.GetTextFromResultsById(5);
+
+            Assert.IsTrue(actualText.Contains(expectedText));
         }
     }
 }
